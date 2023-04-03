@@ -34,11 +34,11 @@ int main()
 
     cout << "liste l1 " << l1 << endl;// <<
 
-    l1.supprimer(l1.longueur()); // suppression à une position donnee
+    l1.supprimer(l1.longueur()-1); // suppression à une position donnee
 
     cout << "liste l1 " << l1 << endl;// <<
 
-    l1.supprimer(l1.longueur()-1); // suppression à une position donnee
+    l1.supprimer(l1.longueur()); // suppression à une position donnee
 
     cout << "liste l1 " << l1 << endl;// <<
 
@@ -75,7 +75,7 @@ int main()
 
     l3.supprimer(3);
     cout << "l3 suppr pos=3 : " << l3 << endl;
-
+/*
     cout << "Maniere STL Premier passage l1 " << endl;
     for(auto it = l1.begin(); it != l1.end(); ++it){
             cout << *it << endl;
@@ -112,5 +112,5 @@ int main()
     delete pl;// on nettoie
 
     cout << "FIN DE TEST" << endl;
-    return 0;
+    return 0;*/
 }
