@@ -1,0 +1,18 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/root/AP4A/TP1",
+            "binaryPath": "/root/AP4A/TP1/tp",
+            "binaryArgs": []
+        }
+    ],
+    "files.associations": {
+        "*.pl": "prolog",
+        "iostream": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "string_view": "cpp"
+    }
+}
