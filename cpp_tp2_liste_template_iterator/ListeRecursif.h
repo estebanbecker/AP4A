@@ -12,7 +12,7 @@
 
 using namespace std;
 
-#define ITERATOR  0
+#define ITERATOR  1
 
 // Classe liste
 template <class T>
@@ -123,7 +123,8 @@ public:
     // Auto-concatenation
     Liste& autoConcat(Liste& l){
         if (reste == NULL) {
-            reste = new Liste(l);
+            reste = new Liste(*l.reste);
+            val = l.val;
         } else if (reste->reste == NULL) {
             reste = new Liste(l);
         } else {
@@ -148,17 +149,34 @@ public:
     }
 
 #if ITERATOR
+
     class Iterateur {
         friend class Liste;
         Liste<T>* pl;
         Iterateur(Liste* l) : pl(l) {}
     public:
         Iterateur();
-        bool operator!=(Iterateur it);
-        Iterateur& operator++();
-        Iterateur operator++(int i);
+        bool operator!=(Iterateur it){
+            return pl != it.pl;
+        }
+        Iterateur& operator++(){
+            if (pl != NULL) {
+                pl = pl->reste;
+            }
+            return *this;
+        }
+        Iterateur operator++(int i){
+            if (pl != NULL) {
+                pl = pl->reste;
+            }
+            return *this;        
+        }
         T& operator*() {// operateur de dereferencement *iter
-            return pl->val;
+            if(pl == NULL) {
+                throw string("Erreur dereferencement");
+            }else{
+                return pl->val;
+            }
         }
     };
     Iterateur begin() {

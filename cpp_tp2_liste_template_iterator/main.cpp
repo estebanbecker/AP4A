@@ -73,9 +73,19 @@ int main()
     l3 = l1.concat(l2);
     cout << "l3 = l1.concat(l2) : " << l3 << endl;
 
+    Liste<int> l4;
+
+    cout << "l4 :" << l4 << endl;
+
+    l4 = l4.concat(l2);
+
+    cout << "l4 = l4.concat(l2) : " << l4 << endl;
+
     l3.supprimer(3);
     cout << "l3 suppr pos=3 : " << l3 << endl;
-/*
+
+#if ITERATOR
+
     cout << "Maniere STL Premier passage l1 " << endl;
     for(auto it = l1.begin(); it != l1.end(); ++it){
             cout << *it << endl;
@@ -112,5 +122,6 @@ int main()
     delete pl;// on nettoie
 
     cout << "FIN DE TEST" << endl;
-    return 0;*/
+    return 0;
 }
+#endif
