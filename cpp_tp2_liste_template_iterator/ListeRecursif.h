@@ -157,7 +157,7 @@ public:
     public:
         Iterateur();
         bool operator!=(Iterateur it){
-            return pl != it.pl;
+            return pl->reste != it.pl;
         }
         Iterateur& operator++(){
             if (pl != NULL) {
@@ -166,17 +166,14 @@ public:
             return *this;
         }
         Iterateur operator++(int i){
+            Iterateur it(*this);
             if (pl != NULL) {
                 pl = pl->reste;
             }
-            return *this;        
+            return it;
         }
         T& operator*() {// operateur de dereferencement *iter
-            if(pl == NULL) {
-                throw string("Erreur dereferencement");
-            }else{
-                return pl->val;
-            }
+            return pl->val;
         }
     };
     Iterateur begin() {
