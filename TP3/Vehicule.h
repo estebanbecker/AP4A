@@ -3,24 +3,8 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <string>
 
-class Vehicule
-{
-private:
-    int id;
-    static int nbVehicule;
-    
-public:
-
-    Vehicule(){
-        id = nbVehicule++;
-    }
-
-    void virtual afficher() = 0;
-    int getId() const { return id; }
-    void virtual control() = 0;
-
-};
 
 class Esystem
 {
@@ -45,6 +29,8 @@ class Esystem
             value = v;
         }
 
+    public:
+
         virtual int warning(){
             if (enable){
                 return 0;
@@ -53,7 +39,7 @@ class Esystem
                 return value;
             }
         }
-}
+};
 
 class Estart : public Esystem
 {
@@ -73,10 +59,11 @@ class Estart : public Esystem
                 return 0;
             }
             else{
-                cout << "Panne de demarrage" << endl;
+                std::cout << "Panne de demarrage" << std::endl;
                 return i ;
             }
-}
+        }
+};
 
 class Emoteur : public Esystem
 {
@@ -96,10 +83,11 @@ class Emoteur : public Esystem
                 return 0;
             }
             else{
-                cout << "Panne de moteur" << endl;
+                std::cout << "Panne de moteur" << std::endl;
                 return i ;
             }
-}
+        }
+};
 
 class Efrein : public Esystem
 {
@@ -119,11 +107,11 @@ class Efrein : public Esystem
                 return 0;
             }
             else{
-                cout << "Panne de freinage" << endl;
+                std::cout << "Panne de freinage" << std::endl;
                 return i ;
             }
         }
-}
+};
 
 class Efeux : public Esystem
 {
@@ -143,9 +131,65 @@ class Efeux : public Esystem
                 return 0;
             }
             else{
-                cout << "Panne de feux" << endl;
+                std::cout << "Panne de feux" << std::endl;
                 return i ;
             }
-}
+        }
+};
+
+class Vehicule
+{
+private:
+    int id;
+    static int nbVehicule;
+
+protected:
+
+    Esystem *system[4];
+    
+public:
+
+    void virtual afficher() = 0;
+    int getId() const { return id; }
+    void virtual control() = 0;
+
+    Vehicule(){
+        system[0] = new Estart();
+        system[1] = new Emoteur();
+        system[2] = new Efrein();
+        system[3] = new Efeux();
+
+        id = nbVehicule++;
+    }
+
+    ~Vehicule(){
+        for (int i = 0; i < 4; i++){
+            delete system[i];
+        }
+    }
+
+    Vehicule(const Vehicule& v){
+        system[0] = new Estart(*(Estart*)v.system[0]);
+        system[1] = new Emoteur(*(Emoteur*)v.system[1]);
+        system[2] = new Efrein(*(Efrein*)v.system[2]);
+        system[3] = new Efeux(*(Efeux*)v.system[3]);
+    }
+
+    Vehicule& operator=(const Vehicule& v){
+        if (this != &v){
+            delete system[0];
+            delete system[1];
+            delete system[2];
+            delete system[3];
+            system[0] = new Estart(*(Estart*)v.system[0]);
+            system[1] = new Emoteur(*(Emoteur*)v.system[1]);
+            system[2] = new Efrein(*(Efrein*)v.system[2]);
+            system[3] = new Efeux(*(Efeux*)v.system[3]);
+        }
+        return *this;
+    }
+
+};
+
 
 #endif
