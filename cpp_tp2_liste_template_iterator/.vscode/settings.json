@@ -1,0 +1,13 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/root/AP4A/cpp_tp2_liste_template_iterator",
+            "binaryPath": "/root/AP4A/cpp_tp2_liste_template_iterator/tp",
+            "binaryArgs": []
+        }
+    ],
+    "files.associations": {
+        "*.pl": "prolog",
+        "iostream": "cpp"
+    }
+}
