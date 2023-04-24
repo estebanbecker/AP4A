@@ -65,7 +65,7 @@ int main()
 
     cout << "l1 : " << l1 << endl;
     cout << "l2 : " << l2 << endl;
-    cout << "l3 : " << l2 << endl;
+    cout << "l3 : " << l3 << endl;
 
     l1.autoConcat(l2);
     cout << "l1.autoConcat(l2) : " << l1 << endl;
@@ -74,6 +74,8 @@ int main()
     cout << "l3 = l1.concat(l2) : " << l3 << endl;
 
     Liste<int> l4;
+
+    l4.supprimer(0);
 
     cout << "l4 :" << l4 << endl;
 

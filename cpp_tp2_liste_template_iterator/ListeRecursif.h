@@ -76,9 +76,15 @@ public:
     // Ajout
     void ajouter(const T& new_val, int pos){
         if (pos == 0) {
-            Liste* l = new Liste(*this);
-            this->val = new_val;
-            reste = l;
+            if (reste == NULL) {
+                reste = new Liste();
+                val = new_val;
+            } else {
+                Liste* l = new Liste();
+                l->reste = reste;
+                l->val = new_val;
+                reste = l;
+            }
         } else {
             if(reste == NULL) {
                 this->val = new_val;
@@ -93,6 +99,9 @@ public:
     // Si la valeur est élevée, on ne supprime pas
     void supprimer(int pos){
         if (pos == 0) {
+            if(reste == NULL){
+                return;
+            }
             Liste* l = reste->reste;
             reste->reste = NULL;
             this->val = reste->val;
@@ -114,10 +123,9 @@ public:
 
     // Concatenation
     Liste concat(Liste& l){
-        Liste* l1 = new Liste(*this);
-        Liste* l2 = new Liste(l);
-        l1->autoConcat(*l2);
-        return *l1;
+        Liste l2 = *this;
+        l2.autoConcat(l);
+        return l2;
     };// utiliser l'autoConcat
 
     // Auto-concatenation
