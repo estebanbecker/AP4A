@@ -22,7 +22,7 @@ LFLAGS=  -o
 LIBS=
 
 # Les fichiers sources de l'application
-FILES= main.cpp ListeRecursif.h Voiture.h Camion.h Vehicule.h Fabrique.h
+FILES= main.cpp ListeRecursif.h Voiture.h Camion.h Vehicule.h Fabrique.h Vehicule.cpp
 
 #-----------
 # LES CIBLES
@@ -43,8 +43,8 @@ main.o:main.cpp ListeRecursif.h Voiture.h Camion.h Vehicule.h
 ListeRecursif.o:ListeRecursif.h
 Voiture.o:Voiture.h Vehicule.h
 Camion.o:Camion.h Vehicule.h
-Vehicule.o:Vehicule.h
-Fabrique.o:Fabrique.h Voiture.h Camion.h ListeRecursif.h
+Vehicule.o:Vehicule.h Vehicule.cpp
+Fabrique.o:Fabrique.h Vehicule.h Camion.h Voiture.h
 
 #---------------------------------
 # REGLES DE COMPILATION IMPLICITES

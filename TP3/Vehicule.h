@@ -9,12 +9,14 @@
 class Esystem
 {
     private:
-        bool enable;
+        
         int value;
 
-        virtual bool check() = 0;
-
     protected:
+
+        bool enable;
+
+        virtual bool check() = 0;
 
         void setValue(int v){
             value = v;
@@ -25,7 +27,6 @@ class Esystem
         }
 
         Esystem(int v){
-            enable = check();
             value = v;
         }
 
@@ -43,14 +44,16 @@ class Esystem
 
 class Estart : public Esystem
 {
-    private:
+    protected:
         bool check(){
-            // Has the probability to return true of 2%
-            return (rand() % 100) < 2;
+            // Has the probability to false true of 2%
+            return (rand() % 100) > 2;
         }
 
     public:
-        Estart() : Esystem(2) {}
+        Estart() : Esystem(2) {
+            enable = check();
+        }
 
         int warning(){
             int i = Esystem::warning();
@@ -67,14 +70,16 @@ class Estart : public Esystem
 
 class Emoteur : public Esystem
 {
-    private:
+    protected:
         bool check(){
-            // Has the probability to return true of 3%
-            return (rand() % 100) < 3;
+            // Has the probability to return false of 3%
+            return (rand() % 100) > 3;
         }
 
     public:
-        Emoteur() : Esystem(3) {}
+        Emoteur() : Esystem(3) {
+            enable = check();
+        }
 
         int warning(){
             int i = Esystem::warning();
@@ -91,14 +96,16 @@ class Emoteur : public Esystem
 
 class Efrein : public Esystem
 {
-    private:
+    protected:
         bool check(){
-            // Has the probability to return true of 5%
-            return (rand() % 100) < 5;
+            // Has the probability to return false of 5%
+            return (rand() % 100) > 5;
         }
 
     public:
-        Efrein() : Esystem(5) {}
+        Efrein() : Esystem(5) {
+            enable = check();
+        }
 
         int warning(){
             int i = Esystem::warning();
@@ -115,14 +122,16 @@ class Efrein : public Esystem
 
 class Efeux : public Esystem
 {
-    private:
+    protected:
         bool check(){
-            // Has the probability to return true of 8%
-            return (rand() % 100) < 8;
+            // Has the probability to return flase of 8%
+            return (rand() % 100) > 8;
         }
 
     public:
-        Efeux() : Esystem(8) {}
+        Efeux() : Esystem(8) {
+            enable = check();
+        }
 
         int warning(){
             int i = Esystem::warning();
@@ -154,10 +163,13 @@ public:
     void virtual control() = 0;
 
     Vehicule(){
+        
         system[0] = new Estart();
         system[1] = new Emoteur();
         system[2] = new Efrein();
         system[3] = new Efeux();
+
+        
 
         id = nbVehicule++;
     }

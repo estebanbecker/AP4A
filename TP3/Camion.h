@@ -14,6 +14,9 @@ class Camion : public Vehicule
         }
 
         void control(){
+
+            std::cout << "Controle du camion: " << getId() << std::endl;
+
             int sum = 0;
             int count = 0;
             for (int i = 0; i < 4; i++){
@@ -25,7 +28,7 @@ class Camion : public Vehicule
             }
 
             if (sum >= 8 || count >= 2){
-                std::cout << "Le systeme de demarrage de la voiture " << getId() << " est en bloqué" << std::endl;
+                std::cout << "Le systeme de demarrage du camion " << getId() << " est en bloqué" << std::endl;
             }
         }
 };

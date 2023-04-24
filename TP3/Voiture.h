@@ -16,6 +16,9 @@ class Voiture : public Vehicule
         void control(){
             int sum = 0;
             int count = 0;
+
+            std::cout << "Controle de la voiture: " << getId() << std::endl;
+            
             for (int i = 0; i < 4; i++){
                 int state = system[i]->warning();
                 if (state != 0){

@@ -26,6 +26,12 @@ class Fabrique
             }
         }
 
+        void afficher(){
+            for (int i = 0; i < listeVehicule.longueur(); i++){
+                listeVehicule[i]->afficher();
+            }
+        }
+
         
 };
 
