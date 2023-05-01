@@ -32,7 +32,7 @@ class Esystem
 
     public:
 
-        virtual int warning(){
+        virtual int warning(int id = -1){
             if (enable){
                 return 0;
             }
@@ -55,14 +55,18 @@ class Estart : public Esystem
             enable = check();
         }
 
-        int warning(){
+        int warning(int id = -1){
             int i = Esystem::warning();
 
             if( i == 0){
                 return 0;
             }
             else{
-                std::cout << "Panne de demarrage" << std::endl;
+                if( id == -1){
+                    std::cout << "Panne de demarrage" << std::endl;
+                }else{
+                    std::cout << "Panne de demarrage de la voiture " << id << std::endl;
+                }
                 return i ;
             }
         }
@@ -81,14 +85,18 @@ class Emoteur : public Esystem
             enable = check();
         }
 
-        int warning(){
+        int warning(int id = -1){
             int i = Esystem::warning();
 
             if( i == 0){
                 return 0;
             }
             else{
-                std::cout << "Panne de moteur" << std::endl;
+                if( id == -1){
+                    std::cout << "Panne de moteur" << std::endl;
+                }else{
+                    std::cout << "Panne de moteur de la voiture " << id << std::endl;
+                }
                 return i ;
             }
         }
@@ -107,14 +115,18 @@ class Efrein : public Esystem
             enable = check();
         }
 
-        int warning(){
+        int warning(int id = -1){
             int i = Esystem::warning();
 
             if( i == 0){
                 return 0;
             }
             else{
-                std::cout << "Panne de freinage" << std::endl;
+                if( id == -1){
+                    std::cout << "Panne de frein" << std::endl;
+                }else{
+                    std::cout << "Panne de frein de la voiture " << id << std::endl;
+                }
                 return i ;
             }
         }
@@ -133,14 +145,18 @@ class Efeux : public Esystem
             enable = check();
         }
 
-        int warning(){
+        int warning(int id = -1){
             int i = Esystem::warning();
 
             if( i == 0){
                 return 0;
             }
             else{
-                std::cout << "Panne de feux" << std::endl;
+                if( id == -1){
+                    std::cout << "Panne de feux" << std::endl;
+                }else{
+                    std::cout << "Panne de feux de la voiture " << id << std::endl;
+                }
                 return i ;
             }
         }

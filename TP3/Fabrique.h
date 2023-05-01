@@ -43,6 +43,8 @@ class Fabrique
         }
 
         Fabrique(Fabrique& f){
+            nbVoit=f.nbVoit;
+            nbCam=f.nbCam;
             int i=0;
             for (Liste<Vehicule*>::Iterateur it = f.listeVehicule.begin(); it != f.listeVehicule.end(); it++){
                 if (i<nbVoit){
@@ -58,6 +60,9 @@ class Fabrique
             if(this==&f){
                 return *this;
             }
+
+            nbVoit=f.nbVoit;
+            nbCam=f.nbCam;
 
             for (Liste<Vehicule*>::Iterateur it = listeVehicule.begin(); it != listeVehicule.end(); it++){
                 delete *it;

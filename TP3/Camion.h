@@ -15,12 +15,10 @@ class Camion : public Vehicule
 
         void control(){
 
-            std::cout << "Controle du camion: " << getId() << std::endl;
-
             int sum = 0;
             int count = 0;
             for (int i = 0; i < 4; i++){
-                int state = system[i]->warning();
+                int state = system[i]->warning(getId());
                 if (state != 0){
                     sum += state;
                     count++;
