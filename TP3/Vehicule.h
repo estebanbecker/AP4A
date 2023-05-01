@@ -65,7 +65,7 @@ class Estart : public Esystem
                 if( id == -1){
                     std::cout << "Panne de demarrage" << std::endl;
                 }else{
-                    std::cout << "Panne de demarrage de la voiture " << id << std::endl;
+                    std::cout << "Panne de feux du vehicule " << id << std::endl;
                 }
                 return i ;
             }
@@ -95,7 +95,7 @@ class Emoteur : public Esystem
                 if( id == -1){
                     std::cout << "Panne de moteur" << std::endl;
                 }else{
-                    std::cout << "Panne de moteur de la voiture " << id << std::endl;
+                    std::cout << "Panne de feux du vehicule " << id << std::endl;
                 }
                 return i ;
             }
@@ -125,7 +125,7 @@ class Efrein : public Esystem
                 if( id == -1){
                     std::cout << "Panne de frein" << std::endl;
                 }else{
-                    std::cout << "Panne de frein de la voiture " << id << std::endl;
+                    std::cout << "Panne de feux du vehicule " << id << std::endl;
                 }
                 return i ;
             }
@@ -155,7 +155,7 @@ class Efeux : public Esystem
                 if( id == -1){
                     std::cout << "Panne de feux" << std::endl;
                 }else{
-                    std::cout << "Panne de feux de la voiture " << id << std::endl;
+                    std::cout << "Panne de feux du vehicule " << id << std::endl;
                 }
                 return i ;
             }
